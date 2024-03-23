@@ -38,7 +38,7 @@ function checkSpeed() {
     }
 
     if (speed <= 70) {
-        displayPopup("OK", "speedChecker","green");
+        displayPopup("OK", "speedChecker","green","speedInput");
     } else {
         demeritPoints = Math.floor((speed - 70) / 5);
         if (demeritPoints > 12) {
@@ -50,7 +50,7 @@ function checkSpeed() {
 }
 
 function calculateNetSalary() {
-    let basicSalary = parseFloat(document.getElementById("basicSalaryInput").value);
+    let basicSalary = parseFloat(document.getElementById("basicSalaryInput").value); 
     let benefits = parseFloat(document.getElementById("benefitsInput").value);
 
     if (isNaN(basicSalary) || isNaN(benefits)) {
@@ -88,15 +88,11 @@ function calculateNetSalary() {
 
     
     let nhifDeductions = Math.min(1700, grossSalary * nhifRate); // Calculate NHIF Deductions
-
-    
     let nssfDeductions = Math.min(1800, grossSalary * nssfRate); // Calculate NSSF Deductions
-
-    
     let netSalary = grossSalary - tax - nhifDeductions - nssfDeductions; // Calculate Net Salary
 
     // Display results
-    let resultsHTML = "Gross Salary: KES " + grossSalary.toFixed(2);
+    let resultsHTML = "Gross Salary: KES " + grossSalary.toFixed(2); //toFixed(2) is used to round the number to 2 decimal places
     resultsHTML += "<br>Tax (PAYE): KES " + tax.toFixed(2);
     resultsHTML += "<br>NHIF Deductions: KES " + nhifDeductions.toFixed(2);
     resultsHTML += "<br>NSSF Deductions: KES " + nssfDeductions.toFixed(2);
@@ -106,11 +102,7 @@ function calculateNetSalary() {
 }
 
 
-    
-    
-
-
-function displayPopup(message, containerId,color,valueInput,valueInput2="benefitsInput") {
+function displayPopup(message, containerId,color,valueInput,valueInput2="benefitsInput") { // valueInput2 takes the benefitsInput id as a the default value
     let popupContainer = document.getElementById(containerId).querySelector(".popup-container");
     let popupContent = popupContainer.querySelector(".popup-content");
     popupContent.innerHTML = message;
@@ -121,7 +113,7 @@ function displayPopup(message, containerId,color,valueInput,valueInput2="benefit
     let popupClose = popupContainer.querySelector(".popup-close");
     popupClose.addEventListener("click", function() {
         popupContainer.style.display = "none";
-        document.getElementById(valueInput).value = "";
+        document.getElementById(valueInput).value = ""; // Clear the input field
         document.getElementById(valueInput2).value = "";
     });
 }
