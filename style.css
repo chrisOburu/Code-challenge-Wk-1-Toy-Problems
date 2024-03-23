@@ -1,28 +1,110 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: rgb(37, 164, 65);
-    color: #ccc;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+    margin: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
 }
+body {
+    background-color: #f2f2f2;
+    
+
+}
+
+
 .container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
+    width: 30%;
 }
 
-.container-2 {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+h1, h2 {
+    text-align: center;
 }
 
-.container-3 {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
+
+.calculators {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+
+
+.container{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.container:hover {
+    animation: glow 1s infinite alternate; /* Start animation on hover */
+}
+
+.basic, .benefits {
+    display: flex;
+    justify-content: space-between;
+}
+
+.basic input, .benefits input {
+    width: 30%;
+}
+
+.button.box {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+button {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 40px rgba(255, 0, 0, 0.3), 0 0 60px rgba(255, 0, 0, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3), 0 0 90px rgba(0, 255, 255, 0.2);
+    }
+}
+
+
+.popup-container {
+    display: none;
+    position: relative;
+    z-index: 9999;
+    margin: auto;
+}
+
+.popup {
+    position: relative;
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    border: black solid 1px;
+
+}
+
+.popup-close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
 }

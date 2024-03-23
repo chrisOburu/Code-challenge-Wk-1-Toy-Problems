@@ -1,34 +1,64 @@
+// function calculateGrade() {
+//     var marks = parseInt(document.getElementById("marksInput").value);
+
+//     if (isNaN(marks) || marks < 0 || marks > 100) {
+//         document.getElementById("gradeOutput").textContent = "Please enter a valid mark between 0 and 100.";
+//         return;
+//     }
+
+//     var grade;
+//     if (marks > 79) {
+//         grade = 'A';
+//     } else if (marks >= 60) {
+//         grade = 'B';
+//     } else if (marks >= 50) {
+//         grade = 'C';
+//     } else if (marks >= 40) {
+//         grade = 'D';
+//     } else {
+//         grade = 'E';
+//     }
+
+//     document.getElementById("gradeOutput").textContent = "Grade: " + grade;
+// }
+
 function calculateGrade() {
     var marks = parseInt(document.getElementById("marksInput").value);
 
     if (isNaN(marks) || marks < 0 || marks > 100) {
-        document.getElementById("gradeOutput").textContent = "Please enter a valid mark between 0 and 100.";
+        displayPopup("&#9888 Please enter a valid mark between 0 and 100.","red");
         return;
     }
 
-    var grade;
+    let grade;
+    let color;
     if (marks > 79) {
         grade = 'A';
+        color = 'green';
     } else if (marks >= 60) {
         grade = 'B';
+        color = 'blue';
     } else if (marks >= 50) {
         grade = 'C';
+        color = 'orange';
     } else if (marks >= 40) {
         grade = 'D';
+        color = 'red';
     } else {
         grade = 'E';
+        color = 'black';
     }
 
-    document.getElementById("gradeOutput").textContent = "Grade: " + grade;
+    displayPopup("Grade: " + grade, color);
+    
 }
-
 
 function checkSpeed() {
     var speed = parseInt(document.getElementById("speedInput").value);
     var demeritPoints = 0;
 
     if (isNaN(speed) || speed < 0) {
-        document.getElementById("resultOutput").textContent = "Please enter a valid speed.";
+        displayPopup( "&#9888 Please enter a valid speed.");
         return;
     }
 
@@ -80,14 +110,14 @@ function calculateNetSalary() {
         taxableIncome -= taxableAmount;
     }
 
-    // Calculate NHIF Deductions
-    var nhifDeductions = Math.min(1700, grossSalary * nhifRate);
+    
+    var nhifDeductions = Math.min(1700, grossSalary * nhifRate); // Calculate NHIF Deductions
 
-    // Calculate NSSF Deductions
-    var nssfDeductions = Math.min(1800, grossSalary * nssfRate);
+    
+    var nssfDeductions = Math.min(1800, grossSalary * nssfRate); // Calculate NSSF Deductions
 
-    // Calculate Net Salary
-    var netSalary = grossSalary - tax - nhifDeductions - nssfDeductions;
+    
+    var netSalary = grossSalary - tax - nhifDeductions - nssfDeductions; // Calculate Net Salary
 
     // Display results
     var resultsHTML = "<p>Gross Salary: KES " + grossSalary.toFixed(2) + "</p>";
@@ -96,4 +126,20 @@ function calculateNetSalary() {
     resultsHTML += "<p>NSSF Deductions: KES " + nssfDeductions.toFixed(2) + "</p>";
     resultsHTML += "<p>Net Salary: KES " + netSalary.toFixed(2) + "</p>";
     document.getElementById("resultsOutput").innerHTML = resultsHTML;
+}
+
+
+function displayPopup(message, color) {
+    var popupContainer = document.getElementById("popupContainer");
+    var popupContent = document.getElementById("popupContent");
+    popupContent.innerHTML = message;
+    popupContainer.style.display = "block";
+    popupContainer.style.color = color;
+
+
+    var popupClose = document.getElementById("popupClose");
+    popupClose.addEventListener("click", function() {
+        popupContainer.style.display = "none";
+        document.getElementById("marksInput").value = "";
+    });
 }
