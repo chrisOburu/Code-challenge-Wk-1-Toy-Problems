@@ -1,32 +1,8 @@
-// function calculateGrade() {
-//     var marks = parseInt(document.getElementById("marksInput").value);
-
-//     if (isNaN(marks) || marks < 0 || marks > 100) {
-//         document.getElementById("gradeOutput").textContent = "Please enter a valid mark between 0 and 100.";
-//         return;
-//     }
-
-//     var grade;
-//     if (marks > 79) {
-//         grade = 'A';
-//     } else if (marks >= 60) {
-//         grade = 'B';
-//     } else if (marks >= 50) {
-//         grade = 'C';
-//     } else if (marks >= 40) {
-//         grade = 'D';
-//     } else {
-//         grade = 'E';
-//     }
-
-//     document.getElementById("gradeOutput").textContent = "Grade: " + grade;
-// }
-
 function calculateGrade() {
-    var marks = parseInt(document.getElementById("marksInput").value);
+    let marks = parseInt(document.getElementById("marksInput").value);
 
     if (isNaN(marks) || marks < 0 || marks > 100) {
-        displayPopup("&#9888 Please enter a valid mark between 0 and 100.","red");
+        displayPopup("&#9432 Please enter a valid mark between 0 and 100.", "gradeCalculator","red","marksInput");
         return;
     }
 
@@ -43,48 +19,48 @@ function calculateGrade() {
         color = 'orange';
     } else if (marks >= 40) {
         grade = 'D';
-        color = 'red';
+        color = 'yellow';
     } else {
         grade = 'E';
-        color = 'black';
+        color = 'red';
     }
 
-    displayPopup("Grade: " + grade, color);
-    
+    displayPopup("Grade: " + grade, "gradeCalculator",color,"marksInput");
 }
 
 function checkSpeed() {
-    var speed = parseInt(document.getElementById("speedInput").value);
-    var demeritPoints = 0;
+    let speed = parseInt(document.getElementById("speedInput").value);
+    let demeritPoints = 0;
 
     if (isNaN(speed) || speed < 0) {
-        displayPopup( "&#9888 Please enter a valid speed.");
+        displayPopup("&#9432 Please enter a valid speed.", "speedChecker","red","speedInput");
         return;
     }
 
     if (speed <= 70) {
-        document.getElementById("resultOutput").textContent = "Ok";
+        displayPopup("OK", "speedChecker","green");
     } else {
         demeritPoints = Math.floor((speed - 70) / 5);
         if (demeritPoints > 12) {
-            document.getElementById("resultOutput").textContent = "License suspended";
+            displayPopup("&#9888 License suspended", "speedChecker","red","speedInput");
         } else {
-            document.getElementById("resultOutput").textContent = "Points: " + demeritPoints;
+            displayPopup("Points: " + demeritPoints, "speedChecker","blue","speedInput");
         }
     }
 }
 
 function calculateNetSalary() {
-    var basicSalary = parseFloat(document.getElementById("basicSalaryInput").value);
-    var benefits = parseFloat(document.getElementById("benefitsInput").value);
+    let basicSalary = parseFloat(document.getElementById("basicSalaryInput").value);
+    let benefits = parseFloat(document.getElementById("benefitsInput").value);
 
     if (isNaN(basicSalary) || isNaN(benefits)) {
-        document.getElementById("resultsOutput").innerHTML = "Please enter valid numbers for salary and benefits.";
+        displayPopup("&#9432 Please enter valid numbers for salary and benefits.", "netSalaryCalculator","red","basicSalaryInput");
         return;
     }
 
+    
     // Tax rates from KRA
-    var taxRates = [
+    let taxRates = [
         { min: 0, max: 24000, rate: 10 },
         { min: 24001, max: 32333, rate: 15 },
         { min: 32334, max: 40385, rate: 20 },
@@ -93,53 +69,59 @@ function calculateNetSalary() {
     ];
 
     // NHIF and NSSF rates
-    var nhifRate = 0.015; // 1.5%
-    var nssfRate = 0.06;  // 6%
+    let nhifRate = 0.015; // 1.5%
+    let nssfRate = 0.06;  // 6%
 
     // Calculate gross salary
-    var grossSalary = basicSalary + benefits;
+    let grossSalary = basicSalary + benefits;
 
     // Calculate PAYE (Tax)
-    var taxableIncome = grossSalary - 24000; // Basic allowance exempted
-    var tax = 0;
-    for (var i = 0; i < taxRates.length; i++) {
+    let taxableIncome = grossSalary - 24000; // Basic allowance exempted
+    let tax = 0;
+    for (let i = 0; i < taxRates.length; i++) {
         if (taxableIncome <= 0) break;
-        var rateInfo = taxRates[i];
-        var taxableAmount = Math.min(taxableIncome, rateInfo.max - rateInfo.min);
+        let rateInfo = taxRates[i];
+        let taxableAmount = Math.min(taxableIncome, rateInfo.max - rateInfo.min);
         tax += taxableAmount * (rateInfo.rate / 100);
         taxableIncome -= taxableAmount;
     }
 
     
-    var nhifDeductions = Math.min(1700, grossSalary * nhifRate); // Calculate NHIF Deductions
+    let nhifDeductions = Math.min(1700, grossSalary * nhifRate); // Calculate NHIF Deductions
 
     
-    var nssfDeductions = Math.min(1800, grossSalary * nssfRate); // Calculate NSSF Deductions
+    let nssfDeductions = Math.min(1800, grossSalary * nssfRate); // Calculate NSSF Deductions
 
     
-    var netSalary = grossSalary - tax - nhifDeductions - nssfDeductions; // Calculate Net Salary
+    let netSalary = grossSalary - tax - nhifDeductions - nssfDeductions; // Calculate Net Salary
 
     // Display results
-    var resultsHTML = "<p>Gross Salary: KES " + grossSalary.toFixed(2) + "</p>";
-    resultsHTML += "<p>Tax (PAYE): KES " + tax.toFixed(2) + "</p>";
-    resultsHTML += "<p>NHIF Deductions: KES " + nhifDeductions.toFixed(2) + "</p>";
-    resultsHTML += "<p>NSSF Deductions: KES " + nssfDeductions.toFixed(2) + "</p>";
-    resultsHTML += "<p>Net Salary: KES " + netSalary.toFixed(2) + "</p>";
-    document.getElementById("resultsOutput").innerHTML = resultsHTML;
+    let resultsHTML = "Gross Salary: KES " + grossSalary.toFixed(2);
+    resultsHTML += "<br>Tax (PAYE): KES " + tax.toFixed(2);
+    resultsHTML += "<br>NHIF Deductions: KES " + nhifDeductions.toFixed(2);
+    resultsHTML += "<br>NSSF Deductions: KES " + nssfDeductions.toFixed(2);
+    resultsHTML += "<br>Net Salary: KES " + netSalary.toFixed(2);
+
+    displayPopup(resultsHTML, "netSalaryCalculator","green","basicSalaryInput");
 }
 
 
-function displayPopup(message, color) {
-    var popupContainer = document.getElementById("popupContainer");
-    var popupContent = document.getElementById("popupContent");
+    
+    
+
+
+function displayPopup(message, containerId,color,valueInput,valueInput2="benefitsInput") {
+    let popupContainer = document.getElementById(containerId).querySelector(".popup-container");
+    let popupContent = popupContainer.querySelector(".popup-content");
     popupContent.innerHTML = message;
     popupContainer.style.display = "block";
-    popupContainer.style.color = color;
+    popupContent.style.backgroundColor = color;
+    popupContent.style.color = "white";
 
-
-    var popupClose = document.getElementById("popupClose");
+    let popupClose = popupContainer.querySelector(".popup-close");
     popupClose.addEventListener("click", function() {
         popupContainer.style.display = "none";
-        document.getElementById("marksInput").value = "";
+        document.getElementById(valueInput).value = "";
+        document.getElementById(valueInput2).value = "";
     });
 }

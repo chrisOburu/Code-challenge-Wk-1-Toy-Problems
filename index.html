@@ -1,54 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crescent Technologies</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crescent Technologies</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/b0faeef2a0.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>Crescent Technologies</h1>
     </header>
     <div class="calculators">
-        <div id ="grade" class="container">
-            <h2>Grade Calculator</h2>
+        <div class="container" id="gradeCalculator">
+            <div class="iconheader">
+                <i class="material-icons">school</i>
+                <h2>Grade Calculator</h2>
+            </div>
             <div class="basic">
                 <label for="marksInput">Enter Student Marks:</label>
                 <input type="number" id="marksInput" min="0" max="100">
             </div>
             <div class="button box">
                 <button onclick="calculateGrade()">Calculate</button>
-                <div id="popupContainer" class="popup-container">
-                    <div id="popup" class="popup">
-                        <span id="popupClose" class="popup-close">&times;</span>
-                        <div id="popupContent"></div>
+                <div class="popup-container">
+                    <div class="popup">
+                        <span class="popup-close"><i class="fa-solid fa-xmark"></i></span>
+                        <div class="popup-content"></div>
                     </div>
                 </div>
             </div>
-            
-            
-        </div>
-        <div class="container" id="speed">
-            <h2>Speed Checker</h2>
+        </div> 
+
+        <div class="container" id="speedChecker">
+            <div class="iconheader">
+                <i class="material-icons">speed</i>
+                <h2>Speed Checker</h2>
+            </div>
             <div class="basic">
                 <label for="speedInput">Enter Car Speed (km/h):</label>
                 <input type="number" id="speedInput">
             </div>
             <div class="button box">
                 <button onclick="checkSpeed()">Check Speed</button>
-                <div id="popupContainer" class="popup-container">
-                    <div id="popup" class="popup">
-                        <span id="popupClose" class="popup-close">&times;</span>
-                        <div id="popupContent"></div>
+                <div class="popup-container">
+                    <div class="popup">
+                        <span class="popup-close"><i class="fa-solid fa-xmark"></i></span>
+                        <div class="popup-content"></div>
                     </div>
                 </div>
-                
             </div>
-            
         </div>
-        <div class="container" id="salary">
-            <h2>Net Salary Calculator</h2>
+
+        <div class="container" id="netSalaryCalculator">
+            <div class="iconheader">
+                <i class="material-icons">payments</i>
+                <h2>Net Salary Calculator</h2>
+            </div>
             <div class="basic">
                 <label for="basicSalaryInput">Enter Basic Salary:</label>
                 <input type="number" id="basicSalaryInput">
@@ -59,10 +69,10 @@
             </div>
             <div class="button box">
                 <button onclick="calculateNetSalary()">Calculate</button>
-                <div id="popupContainer" class="popup-container">
-                    <div id="popup" class="popup">
-                        <span id="popupClose" class="popup-close">&times;</span>
-                        <div id="popupContent"></div>
+                <div class="popup-container">
+                    <div class="popup">
+                        <span class="popup-close"><i class="fa-solid fa-xmark"></i></span>
+                        <div class="popup-content"></div>
                     </div>
                 </div>
             </div>
@@ -72,3 +82,4 @@
     <script src="index.js"></script>
 </body>
 </html>
+
