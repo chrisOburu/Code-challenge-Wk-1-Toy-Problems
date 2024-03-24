@@ -1,7 +1,7 @@
 function calculateGrade() {
-    let marks = parseInt(document.getElementById("marksInput").value);
+    let marks = parseInt(document.getElementById("marksInput").value); // Convert the input string to an integer
 
-    if (isNaN(marks) || marks < 0 || marks > 100) {
+    if (isNaN(marks) || marks < 0 || marks > 100) { // Check if the input is a number between 0 and 100
         displayPopup("&#9432 Please enter a valid mark between 0 and 100.", "gradeCalculator","red","marksInput");
         return;
     }
@@ -19,7 +19,7 @@ function calculateGrade() {
         color = 'orange';
     } else if (marks >= 40) {
         grade = 'D';
-        color = 'yellow';
+        color = 'violet';
     } else {
         grade = 'E';
         color = 'red';
