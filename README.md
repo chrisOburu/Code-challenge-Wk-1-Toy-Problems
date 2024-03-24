@@ -7,7 +7,8 @@ This is a web application, showcasing application of javascript functions in sol
 ******
 
 ## SCREENSHOTS
-![image](https://github.com/okumbamiruka/my-personal-website/assets/48215059/6663730f-b937-4e54-9004-8bb56aeb972c)
+![Screenshot 2024-03-24 101948](https://github.com/okumbamiruka/Code-challenge-Wk-1-Toy-Problems/assets/48215059/dde16f8d-eb28-4857-be16-b99bab02960d)
+
 
 
 ********
@@ -41,7 +42,7 @@ Or you can access the web application directly via this [https://okumbamiruka.gi
 ## Dependencies
 - [https://fontawesome.com/](Fontawesome)
 - [https://storyset.com/](Storyset)
-- [https://fonts.google.com/icons](google icons)
+- [https://fonts.google.com/icons/](google icons)
 
 
 *****
