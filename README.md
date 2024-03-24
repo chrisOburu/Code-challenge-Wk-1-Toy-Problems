@@ -7,8 +7,7 @@ This is a web application, showcasing application of javascript functions in sol
 ******
 
 ## SCREENSHOTS
-![Screenshot 2024-03-24 101948](https://github.com/okumbamiruka/Code-challenge-Wk-1-Toy-Problems/assets/48215059/dde16f8d-eb28-4857-be16-b99bab02960d)
-
+![Screenshot 2024-03-24 102511](https://github.com/okumbamiruka/Code-challenge-Wk-1-Toy-Problems/assets/48215059/94241c42-b4cd-4910-a154-5fd1ca4e2ef7)
 
 
 ********
