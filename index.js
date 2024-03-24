@@ -42,7 +42,7 @@ function checkSpeed() {
     } else {
         demeritPoints = Math.floor((speed - 70) / 5);
         if (demeritPoints > 12) {
-            displayPopup("&#9888 License suspended", "speedChecker","red","speedInput");
+            displayPopup("&#9888 License suspended", "speedChecker","red","speedInput"); //
         } else {
             displayPopup("Points: " + demeritPoints, "speedChecker","blue","speedInput");
         }
